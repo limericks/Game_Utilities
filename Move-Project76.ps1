@@ -6,6 +6,7 @@ $MakeCopy = Test-Path $OSDrivePath
 if (!$MakeCopy){
     write-host "Project76.ini not found at $OSDrivePath. $newline Copying Project76.ini from $InstallationPath"
     Copy-Item -Path $InstallationPath -Destination $OSDrivePath
+    Set-ItemProperty -Path $OSDrivePath -Name IsReadOnly -Value $true
     if(Test-Path $OSDrivePath){
         write-host "Copy Success."
     }else{
